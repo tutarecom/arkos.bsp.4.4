@@ -106,6 +106,9 @@ static int __init opp_bin_sel_setup(char *__str)
 	case 1512:
 		opp_bin_sel = 4;
 		break;
+	case 1608:
+    	opp_bin_sel = 0;
+    	break;
 	default:
 		pr_info("[oga-avs]no available cpufreq, set 1.296\n");
 		opp_bin_sel = 13;
