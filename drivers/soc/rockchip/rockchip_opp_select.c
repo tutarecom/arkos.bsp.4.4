@@ -840,7 +840,6 @@ int rockchip_adjust_power_scale(struct device *dev, int scale)
 		target_scale, irdrop_scale, scale);
 
 	if (avs == 1) {
-		ret = rockchip_pll_clk_adaptive_scaling(clk, target_scale);
 		if (max_cpufreq < 1608000) {
             ret = rockchip_pll_clk_adaptive_scaling(clk, target_scale);
             if (ret)
