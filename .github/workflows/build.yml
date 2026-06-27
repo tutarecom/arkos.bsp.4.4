@@ -2,9 +2,10 @@ name: Build ArkOS BSP
 
 on:
   push:
-    branches: [rg351]
+    branches: [rg351, oc-test]
   pull_request:
-    branches: [rg351]
+    branches: [rg351, oc-test]
+  workflow_dispatch:
 
 jobs:
   build:
