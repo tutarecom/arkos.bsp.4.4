@@ -1,4 +1,4 @@
-rockchip_pll_rate_table/*
+/*
  * Copyright (c) 2017 Fuzhou Rockchip Electronics Co., Ltd
  *
  * SPDX-License-Identifier: GPL-2.0+
@@ -840,17 +840,8 @@ int rockchip_adjust_power_scale(struct device *dev, int scale)
 		target_scale, irdrop_scale, scale);
 
 	if (avs == 1) {
-        /*
-         * Skip adaptive scaling for max_cpufreq >= 1608 MHz.
-         * rockchip_pll_clk_adaptive_scaling() sets pll->sel, which
-         * causes rockchip_get_pll_settings() to silently return a
-         * lower rate for any OPP whose PLL table index < pll->sel.
-         * With pll->sel = 0 (default from kzalloc), no capping
-         * occurs and the PLL is programmed to the actual requested
-         * rate. This is required for 1608 MHz to actually take
-         * effect instead of being silently capped to 1296 MHz.
-         */
-        if (max_cpufreq < 1608000) {
+		ret = rockchip_pll_clk_adaptive_scaling(clk, target_scale);
+		if (max_cpufreq < 1608000) {
             ret = rockchip_pll_clk_adaptive_scaling(clk, target_scale);
             if (ret)
                 dev_err(dev, "Failed to adaptive scaling\n");
