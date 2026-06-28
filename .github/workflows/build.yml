@@ -2,9 +2,9 @@ name: Build ArkOS BSP
 
 on:
   push:
-    branches: [rg351, oc-test, debloat]
+    branches: [rg351, oc-test, debloat, usb-c-fix]
   pull_request:
-    branches: [rg351, oc-test, debloat]
+    branches: [rg351, oc-test, debloat, usb-c-fix]
   workflow_dispatch:
 
 jobs:
